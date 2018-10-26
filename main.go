@@ -21,8 +21,8 @@ func main() {
 	fmt.Printf("Nonsense = %d\n", getNonsense())
 	fmt.Println("Deallocated nonsense.")
 
-	fmt.Println("Sleeping 10s...")
-	time.Sleep(10 * time.Second)
+	fmt.Println("Sleeping 1m...")
+	time.Sleep(time.Minute)
 
 	fmt.Println("runtime.GC()...")
 	runtime.GC()
@@ -44,7 +44,7 @@ func logStats() {
 		var mst runtime.MemStats
 		runtime.ReadMemStats(&mst)
 
-		fmt.Fprintf(os.Stderr, "MEM = %d @ %s\n", mst.Sys, time.Now().Format(time.RFC3339))
+		fmt.Fprintf(os.Stderr, "MEM = %d @ %s\n", mst.Alloc, time.Now().Format(time.RFC3339))
 	}
 }
 
